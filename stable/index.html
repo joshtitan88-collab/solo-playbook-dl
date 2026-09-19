@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#0b0f14"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Stable"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<title>Stable — AI Reps</title>
+<style>
+  :root { color-scheme: dark; --bg:#0b0f14; --card:#141b24; --text:#e8eef6; --muted:#8b9bb0; --bar:#1e2a38; --ok:#3dd68c; --mid:#f5c542; --low:#ff6b6b; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--text); min-height:100dvh; padding: max(16px, env(safe-area-inset-top)) 16px 32px; }
+  h1 { font-size:1.25rem; margin:0 0 4px; font-weight:700; letter-spacing:.02em; }
+  .sub { color:var(--muted); font-size:.85rem; margin-bottom:18px; }
+  .card { background:var(--card); border-radius:14px; padding:14px 14px 12px; margin-bottom:10px; }
+  .row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .name { font-weight:600; font-size:1.05rem; }
+  .pct { font-variant-numeric: tabular-nums; font-weight:700; font-size:1.15rem; }
+  .note { color:var(--muted); font-size:.8rem; margin-top:6px; min-height:1em; }
+  .track { height:8px; background:var(--bar); border-radius:99px; overflow:hidden; margin-top:10px; }
+  .fill { height:100%; border-radius:99px; transition: width .35s ease; }
+  .flags { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 8px; }
+  .chip { font-size:.72rem; padding:4px 8px; border-radius:999px; background:#1a2330; color:var(--muted); border:1px solid #243246; }
+  .chip.on { color:var(--ok); border-color:#2a5a42; }
+  button.refresh { width:100%; margin-top:12px; padding:12px; border:0; border-radius:12px; background:#243246; color:var(--text); font-weight:600; font-size:1rem; }
+  .err { color:var(--low); font-size:.85rem; margin-top:8px; }
+  footer { margin-top:18px; color:var(--muted); font-size:.75rem; line-height:1.4; }
+</style>
+</head>
+<body>
+  <h1>Stable</h1>
+  <div class="sub" id="updated">Loading…</div>
+  <div class="flags" id="flags"></div>
+  <div id="board"></div>
+  <button class="refresh" type="button" id="btn">Refresh</button>
+  <div class="err" id="err" hidden></div>
+  <footer>Honest % only — no fake 100%. Add to Home Screen from Chrome ⋮ → Install app / Add to Home screen. Source: status.json (Stable updates).</footer>
+<script>
+function color(p){ if(p>=70) return getComputedStyle(document.documentElement).getPropertyValue('--ok'); if(p>=40) return getComputedStyle(document.documentElement).getPropertyValue('--mid'); return getComputedStyle(document.documentElement).getPropertyValue('--low'); }
+async function load(){
+  const err=document.getElementById('err'); err.hidden=true;
+  try{
+    const r=await fetch('status.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    document.getElementById('updated').textContent = (d.updated_at||'') + (d.note? ' · '+d.note : '');
+    const flags=document.getElementById('flags'); flags.innerHTML='';
+    const f=d.flags||{};
+    const chips=[['Wan I2V', f.wan_i2v],['Fillers', f.fillers],['Fake 100%', f.fake_100===false?'banned':String(f.fake_100)]];
+    for(const [k,v] of chips){ const s=document.createElement('span'); s.className='chip'+(v&&v!=='blocked'&&v!=='false'?' on':''); s.textContent=k+': '+v; flags.appendChild(s); }
+    const board=document.getElementById('board'); board.innerHTML='';
+    for(const rep of (d.reps||[])){
+      const pct=Math.max(0,Math.min(100, Number(rep.pct)||0));
+      const card=document.createElement('div'); card.className='card';
+      card.innerHTML=`<div class="row"><span class="name">${rep.name}</span><span class="pct" style="color:${color(pct)}">${pct}%</span></div>
+        <div class="track"><div class="fill" style="width:${pct}%;background:${color(pct)}"></div></div>
+        <div class="note">${rep.note||''}</div>`;
+      board.appendChild(card);
+    }
+  }catch(e){ err.hidden=false; err.textContent='Could not load status.json — '+e.message; }
+}
+document.getElementById('btn').onclick=load;
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
