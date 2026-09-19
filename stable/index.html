@@ -19,7 +19,7 @@
   .row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
   .name { font-weight:600; font-size:1.05rem; }
   .pct { font-variant-numeric: tabular-nums; font-weight:700; font-size:1.15rem; }
-  .note { color:var(--muted); font-size:.8rem; margin-top:6px; min-height:1em; }
+  .note { color:var(--muted); font-size:.8rem; margin-top:6px; line-height:1.35; }
   .track { height:8px; background:var(--bar); border-radius:99px; overflow:hidden; margin-top:10px; }
   .fill { height:100%; border-radius:99px; transition: width .35s ease; }
   .flags { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 8px; }
@@ -37,22 +37,39 @@
   <div id="board"></div>
   <button class="refresh" type="button" id="btn">Refresh</button>
   <div class="err" id="err" hidden></div>
-  <footer>Honest % only — no fake 100%. Add to Home Screen from Chrome ⋮ → Install app / Add to Home screen. Source: status.json (Stable updates).</footer>
+  <footer>Honest % only — no fake 100%. Chrome ⋮ → Add to Home screen. Numbers from Stable (GH Pages mirror of Mini ticker).</footer>
 <script>
-function color(p){ if(p>=70) return getComputedStyle(document.documentElement).getPropertyValue('--ok'); if(p>=40) return getComputedStyle(document.documentElement).getPropertyValue('--mid'); return getComputedStyle(document.documentElement).getPropertyValue('--low'); }
+function color(p){ if(p>=70) return 'var(--ok)'; if(p>=40) return 'var(--mid)'; return 'var(--low)'; }
+function rowsFrom(d){
+  if (Array.isArray(d.items)) return d.items.filter(x => x.pct != null).map(x => ({name:x.name, pct:x.pct, note:x.detail||x.note||''}));
+  if (Array.isArray(d.reps)) return d.reps.map(x => ({name:x.name, pct:x.pct, note:x.note||''}));
+  return [];
+}
 async function load(){
   const err=document.getElementById('err'); err.hidden=true;
   try{
     const r=await fetch('status.json?t='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
-    document.getElementById('updated').textContent = (d.updated_at||'') + (d.note? ' · '+d.note : '');
+    document.getElementById('updated').textContent = (d.updated || d.updated_at || '') + (d.note ? ' · '+d.note : '');
     const flags=document.getElementById('flags'); flags.innerHTML='';
     const f=d.flags||{};
-    const chips=[['Wan I2V', f.wan_i2v],['Fillers', f.fillers],['Fake 100%', f.fake_100===false?'banned':String(f.fake_100)]];
-    for(const [k,v] of chips){ const s=document.createElement('span'); s.className='chip'+(v&&v!=='blocked'&&v!=='false'?' on':''); s.textContent=k+': '+v; flags.appendChild(s); }
+    const chips=[
+      ['Wan I2V', f.wan_i2v],
+      ['Fillers', f.fillers],
+      ['Abby', f.abby_plate],
+      ['Sam', f.sam],
+      ['Fake 100%', f.fake_100===false?'banned':String(f.fake_100||'')]
+    ].filter(([,v]) => v!=null && v!=='');
+    for(const [k,v] of chips){
+      const s=document.createElement('span');
+      const on = v && !['blocked','UNSET','NOT DONE','false'].includes(String(v));
+      s.className='chip'+(on?' on':'');
+      s.textContent=k+': '+v;
+      flags.appendChild(s);
+    }
     const board=document.getElementById('board'); board.innerHTML='';
-    for(const rep of (d.reps||[])){
+    for(const rep of rowsFrom(d)){
       const pct=Math.max(0,Math.min(100, Number(rep.pct)||0));
       const card=document.createElement('div'); card.className='card';
       card.innerHTML=`<div class="row"><span class="name">${rep.name}</span><span class="pct" style="color:${color(pct)}">${pct}%</span></div>
