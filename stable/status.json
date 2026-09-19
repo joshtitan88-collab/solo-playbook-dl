@@ -1,39 +1,39 @@
 {
-  "updated_at": "2026-09-19T04:45:13-04:00",
+  "updated_at": "2026-09-19T04:45:23-04:00",
   "timezone": "America/New_York",
-  "source": "Stable live (STATUS.md + registry + ticker)",
+  "source": "Stable push_mobile_status.py",
   "honest": true,
-  "note": "No fake 100%. Wan I2V unlocked. Abby UNSET. Faith LOCKED mole. Parallel lanes.",
+  "note": "No fake 100%. Abby UNSET. Wan I2V unlocked.",
   "reps": [
     {
       "id": "tammy",
       "name": "Tammy",
       "pct": 55,
-      "note": "Wan I2V unlocked; dirty stills 8/8; dirty-vid batch running"
+      "note": "Wan I2V / dirty stills+vids"
     },
     {
       "id": "tessa",
       "name": "Tessa",
       "pct": 50,
-      "note": "vid/voice thin; no Klein LoRA weights yet"
+      "note": "vid/voice thin"
     },
     {
       "id": "abby",
       "name": "Abby",
       "pct": 28,
-      "note": "UNSET \u2014 true face TBD; lineage A \u2192 Faith"
+      "note": "UNSET plate"
     },
     {
       "id": "faith",
       "name": "Faith",
       "pct": 40,
-      "note": "LOCKED mole plate; stills ingest/gen in flight"
+      "note": "LOCKED mole; stills climbing"
     },
     {
       "id": "sam",
       "name": "Sam",
       "pct": 72,
-      "note": "fillers MATCHED; NOT DONE without Joshua; D7 open"
+      "note": "NOT DONE without Joshua"
     }
   ],
   "flags": {
