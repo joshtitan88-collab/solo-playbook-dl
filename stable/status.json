@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-09-19T16:02:44-04:00",
+  "updated_at": "2026-09-19T16:04:57-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
-  "note": "No fake 100%. Abby UNSET. Wan I2V unlocked.",
+  "note": "No fake 100%. Wan I2V unlocked.",
   "reps": [
     {
       "id": "tammy",
@@ -39,7 +39,7 @@
   "flags": {
     "wan_i2v": "unlocked",
     "fillers": "matched",
-    "abby_qc_lock": "UNSET",
+    "abby_qc_lock": "unknown",
     "faith_qc_lock": "LOCKED",
     "fake_100": false
   }
