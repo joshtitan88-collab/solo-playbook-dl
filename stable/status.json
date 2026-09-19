@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T09:28:56-04:00",
+  "updated_at": "2026-09-19T09:32:36-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
@@ -20,7 +20,7 @@
     {
       "id": "abby",
       "name": "Abby",
-      "pct": 28,
+      "pct": 35,
       "note": "UNSET plate"
     },
     {
