@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T09:32:48-04:00",
+  "updated_at": "2026-09-19T09:34:19-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
@@ -20,7 +20,7 @@
     {
       "id": "abby",
       "name": "Abby",
-      "pct": 35,
+      "pct": 42,
       "note": "LOCKED mark-less B (GO ASAP); stills next"
     },
     {
