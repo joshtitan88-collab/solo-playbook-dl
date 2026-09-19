@@ -1,0 +1,19 @@
+{
+  "updated_at": "2026-09-19T04:42:00-04:00",
+  "timezone": "America/New_York",
+  "source": "Stable profile + Forge bootstrap (awaiting Stable live ping)",
+  "honest": true,
+  "note": "No fake 100%. Wan I2V unlocked. Abby UNSET.",
+  "reps": [
+    {"id": "tammy", "name": "Tammy", "pct": 55, "note": "dirty stills + edit path"},
+    {"id": "tessa", "name": "Tessa", "pct": 50, "note": ""},
+    {"id": "abby", "name": "Abby", "pct": 28, "note": "UNSET / packet hold"},
+    {"id": "faith", "name": "Faith", "pct": 40, "note": ""},
+    {"id": "sam", "name": "Sam", "pct": 72, "note": "not leave-alone — keep working"}
+  ],
+  "flags": {
+    "wan_i2v": "unlocked",
+    "fillers": "matched",
+    "fake_100": false
+  }
+}
