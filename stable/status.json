@@ -1,97 +1,46 @@
 {
-  "updated": "2026-09-19 04:45:00 AM ET",
-  "updated_at": "2026-09-19 04:45:00 AM ET",
-  "title": "STABLE OPS",
-  "source": "Stable live ping 2026-09-19 ~4:43 AM ET + Mini stable-ticker/status.json",
+  "updated_at": "2026-09-19T04:45:13-04:00",
+  "timezone": "America/New_York",
+  "source": "Stable live (STATUS.md + registry + ticker)",
   "honest": true,
-  "note": "No fake 100%. Wan I2V unlocked. Abby UNSET. Sam NOT DONE.",
-  "persona_count": 5,
-  "flags": {
-    "wan_i2v": "unlocked",
-    "fillers": "matched",
-    "fake_100": false,
-    "abby_plate": "UNSET",
-    "sam": "NOT DONE"
-  },
-  "items": [
-    {
-      "id": "tammy",
-      "name": "Tammy",
-      "level": "yellow",
-      "pct": 55,
-      "kind": "content",
-      "detail": "Wan I2V unlocked \u00b7 dirty stills 8/8 \u00b7 dirty-vid batch ordered \u00b7 Flux train abandoned on 16GB"
-    },
-    {
-      "id": "tessa",
-      "name": "Tessa Voss",
-      "level": "yellow",
-      "pct": 50,
-      "kind": "content",
-      "detail": "stills/id partial \u00b7 video+voice near 0 \u00b7 no Klein LoRA weights on Tower yet"
-    },
-    {
-      "id": "abby",
-      "name": "Abby",
-      "level": "yellow",
-      "pct": 28,
-      "kind": "content",
-      "detail": "UNSET plate (wrong-rep A\u2192Faith rejected) \u00b7 waiting true face pick \u00b7 no gens"
-    },
-    {
-      "id": "faith",
-      "name": "Faith",
-      "level": "yellow",
-      "pct": 40,
-      "kind": "content",
-      "detail": "LOCKED mole plate (sha 13970c5f\u2026) \u00b7 stills ingest/gen in flight \u00b7 voice/video 0"
-    },
-    {
-      "id": "sam",
-      "name": "Sam Desk",
-      "level": "yellow",
-      "pct": 72,
-      "kind": "desk",
-      "detail": "fillers MATCHED \u00b7 D0 PASS \u00b7 NOT DONE without Joshua \u00b7 FlashHead/D7 still open"
-    }
-  ],
+  "note": "No fake 100%. Wan I2V unlocked. Abby UNSET. Faith LOCKED mole. Parallel lanes.",
   "reps": [
     {
       "id": "tammy",
       "name": "Tammy",
       "pct": 55,
-      "note": "Wan I2V unlocked \u00b7 dirty stills 8/8 \u00b7 dirty-vid batch ordered \u00b7 Flux abandoned 16GB"
+      "note": "Wan I2V unlocked; dirty stills 8/8; dirty-vid batch running"
     },
     {
       "id": "tessa",
-      "name": "Tessa Voss",
+      "name": "Tessa",
       "pct": 50,
-      "note": "stills/id partial \u00b7 video+voice ~0 \u00b7 no Klein LoRA on Tower"
+      "note": "vid/voice thin; no Klein LoRA weights yet"
     },
     {
       "id": "abby",
       "name": "Abby",
       "pct": 28,
-      "note": "UNSET plate \u00b7 waiting true face pick \u00b7 no gens"
+      "note": "UNSET \u2014 true face TBD; lineage A \u2192 Faith"
     },
     {
       "id": "faith",
       "name": "Faith",
       "pct": 40,
-      "note": "LOCKED mole plate \u00b7 stills ingest in flight \u00b7 voice/video 0"
+      "note": "LOCKED mole plate; stills ingest/gen in flight"
     },
     {
       "id": "sam",
-      "name": "Sam Desk",
+      "name": "Sam",
       "pct": 72,
-      "note": "fillers MATCHED \u00b7 D0 PASS \u00b7 NOT DONE \u00b7 FlashHead/D7 open"
+      "note": "fillers MATCHED; NOT DONE without Joshua; D7 open"
     }
   ],
-  "legend": {
-    "green": "good",
-    "yellow": "needs attention",
-    "red": "down"
-  },
-  "rule": "Honest % only. Stable owns numbers via Mini ticker + this file.",
-  "ticker_tailscale": "http://100.66.157.23:8788/"
+  "flags": {
+    "wan_i2v": "unlocked",
+    "fillers": "matched",
+    "abby_qc_lock": "UNSET",
+    "faith_qc_lock": "LOCKED",
+    "fake_100": false
+  }
 }
