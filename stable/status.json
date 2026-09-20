@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20T08:13:25-04:00",
+  "updated_at": "2026-09-20T08:14:08-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
@@ -9,25 +9,25 @@
       "id": "tammy",
       "name": "Tammy",
       "pct": 68,
-      "note": "stills 8/8; Wan dirty QC 0/8 PASS (wrong-side mark)"
+      "note": "PROMOTE bathtub+collar+door; pool/silk PARKED"
     },
     {
       "id": "tessa",
       "name": "Tessa",
-      "pct": 50,
-      "note": "vid/voice thin"
+      "pct": 57,
+      "note": "3 Wan PROMOTE synced; voice 0"
     },
     {
       "id": "abby",
       "name": "Abby",
-      "pct": 50,
-      "note": "LOCKED mark-less B (GO ASAP); stills next"
+      "pct": 58,
+      "note": "B LOCKED; B1 Wan trio PROMOTE; voice 0"
     },
     {
       "id": "faith",
       "name": "Faith",
       "pct": 65,
-      "note": "LOCKED mole; stills climbing"
+      "note": "F1 stills+Wan PROMOTE; voice/dist 0"
     },
     {
       "id": "sam",
