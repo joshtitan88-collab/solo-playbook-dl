@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T15:09:41-04:00",
+  "updated_at": "2026-09-24T15:09:44-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
@@ -14,7 +14,7 @@
     {
       "id": "tessa",
       "name": "Tessa",
-      "pct": 57,
+      "pct": 40,
       "note": "3 Wan PROMOTE synced; voice 0"
     },
     {
