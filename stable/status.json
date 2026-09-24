@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T15:01:44-04:00",
+  "updated_at": "2026-09-24T15:03:52-04:00",
   "timezone": "America/New_York",
   "source": "Stable push_mobile_status.py",
   "honest": true,
@@ -20,7 +20,7 @@
     {
       "id": "abby",
       "name": "Abby",
-      "pct": 58,
+      "pct": 32,
       "note": "B LOCKED; B1 Wan trio PROMOTE; voice 0"
     },
     {
